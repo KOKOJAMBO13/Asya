@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Для моей королевы ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow-x:hidden;
+      background:#090909;
+      color:white;
+    }
+
+    /* BACKGROUND */
+
+    .bg{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      background:
+        radial-gradient(circle at top,#ff4d8d22 0%,transparent 35%),
+        radial-gradient(circle at bottom,#ff008022 0%,transparent 40%),
+        #090909;
+      z-index:-5;
+    }
+
+    .stars{
+      position:fixed;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      z-index:-4;
+    }
+
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle{
+      0%,100%{
+        opacity:.2;
+        transform:scale(1);
+      }
+      50%{
+        opacity:1;
+        transform:scale(1.8);
+      }
+    }
+
+    /* FLOAT HEARTS */
+
+    .heart{
+      position:fixed;
+      bottom:-20px;
+      color:#ff4d8d;
+      animation: floatHeart linear infinite;
+      opacity:.7;
+      z-index:-1;
+    }
+
+    @keyframes floatHeart{
+      0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+      }
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:25px;
+      position:relative;
+    }
+
+    .glass{
+      width:100%;
+      max-width:800px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:30px;
+      padding:50px 25px;
+      box-shadow:0 0 40px rgba(255,0,128,.25);
+      animation: fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .title{
+      font-size:70px;
+      font-family:'Great Vibes',cursive;
+      color:#ff7bac;
+      margin-bottom:10px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ff4d8d;
+      }
+      to{
+        text-shadow:
+          0 0 20px #ff4d8d,
+          0 0 40px #ff0080;
+      }
+    }
+
+    .subtitle{
+      font-size:20px;
+      line-height:1.8;
+      color:#eee;
+      margin-top:20px;
+    }
+
+    .love-btn{
+      margin-top:35px;
+      border:none;
+      outline:none;
+      padding:18px 38px;
+      border-radius:999px;
+      background:linear-gradient(45deg,#ff4d8d,#ff0080);
+      color:white;
+      font-size:18px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.4s;
+      box-shadow:0 0 20px rgba(255,0,128,.4);
+    }
+
+    .love-btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 40px rgba(255,0,128,.8);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 20px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:45px;
+      margin-bottom:50px;
+      color:#ff7bac;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:25px;
+      padding:30px;
+      transition:.4s;
+      backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      width:200%;
+      height:200%;
+      background:linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+      );
+      transform:rotate(45deg);
+      top:-150%;
+      left:-150%;
+      transition:.8s;
+    }
+
+    .card:hover::before{
+      top:100%;
+      left:100%;
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 0 25px rgba(255,0,128,.25);
+    }
+
+    .card h3{
+      font-size:24px;
+      margin-bottom:15px;
+      color:#ff7bac;
+    }
+
+    .card p{
+      color:#ddd;
+      line-height:1.7;
+    }
+
+    /* LOVE COUNTER */
+
+    .counter{
+      text-align:center;
+      margin-top:50px;
+      font-size:22px;
+      color:#fff;
+    }
+
+    .counter span{
+      color:#ff7bac;
+      font-weight:700;
+      font-size:28px;
+    }
+
+    /* FINAL */
+
+    .final{
+      min-height:80vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+    }
+
+    .final-text{
+      max-width:900px;
+      font-size:28px;
+      line-height:1.8;
+      color:#fff;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.02);
+      }
+    }
+
+    .signature{
+      margin-top:30px;
+      font-family:'Great Vibes',cursive;
+      font-size:60px;
+      color:#ff7bac;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .title{
+        font-size:54px;
+      }
+
+      .subtitle{
+        font-size:17px;
+      }
+
+      .section-title{
+        font-size:35px;
+      }
+
+      .final-text{
+        font-size:22px;
+      }
+
+      .signature{
+        font-size:45px;
+      }
+
+      .glass{
+        padding:40px 20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <div class="stars" id="stars"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="glass">
+
+      <h1 class="title">Асечка моя❤️</h1>
+
+      <p class="subtitle">
+        Каждый день я ловлю себя на мысли, что мне невероятно повезло встретить тебя. Ты для меня не просто девушка — ты человек, с которым я чувствую себя по-настоящему живым. Твоя улыбка успокаивает меня, твой голос согревает, а твоё присутствие рядом делает всё вокруг правильным. Я люблю тебя глубоко и спокойно, всей душой. И хочу, чтобы ты всегда это чувствовала.
+      </p>
+
+      <button class="love-btn" onclick="showLove()">
+        Нажми сюда 💖
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- CARDS -->
+  <section>
+
+    <h2 class="section-title">
+      Почему я тебя люблю
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>✨ Твоя улыбка</h3>
+        <p>
+          Она способна сделать мой день лучше
+          даже в самый плохой момент.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>💗 Твой характер</h3>
+        <p>
+          Ты невероятно добрая, милая
+          и самая особенная девушка.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌌 Твои глаза</h3>
+        <p>
+         они такие красивые и глубокие, что в них можно утонуть.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>❤️ Просто потому что это ты</h3>
+        <p>
+          Ты у меня вообще красивая и крутая и самая любимая.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="counter">
+      Моя любовь к тебе:
+      <span id="percent">0%</span>
+    </div>
+
+  </section>
+
+  <!-- FINAL -->
+  <section class="final">
+
+    <div>
+
+      <div class="final-text">
+        Ася...<br><br>
+
+        Спасибо тебе за то,
+        что ты появилась в моей жизни.<br><br>
+
+        Я хочу делать тебя счастливой,
+        поддерживать тебя,
+        смеяться вместе с тобой,
+        и быть рядом несмотря ни на что.<br><br>
+
+        Ты — мой самый любимый человек.
+      </div>
+
+      <div class="signature">
+        Я люблю тебя ❤️
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    // STARS
+
+    const stars = document.getElementById("stars");
+
+    for(let i = 0; i < 120; i++){
+
+      let star = document.createElement("div");
+      star.classList.add("star");
+
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+
+      star.style.animationDuration =
+        (Math.random() * 3 + 2) + "s";
+
+      stars.appendChild(star);
+    }
+
+    // HEARTS
+
+    function createHeart(){
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize =
+        (Math.random() * 20 + 15) + "px";
+
+      heart.style.animationDuration =
+        (Math.random() * 5 + 5) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },10000);
+
+    }
+
+    setInterval(createHeart,300);
+
+    // BUTTON
+
+    function showLove(){
+
+      alert("Ася, ты самое лучшее что случалось в моей жизни ❤️");
+
+    }
+
+    // LOVE COUNTER
+
+    let percent = 0;
+
+    const counter = setInterval(()=>{
+
+      percent++;
+
+      document.getElementById("percent").innerText =
+        percent + "%";
+
+      if(percent >= 1000){
+        clearInterval(counter);
+      }
+
+    },20);
+
+  </script>
+
+</body>
+</html>
